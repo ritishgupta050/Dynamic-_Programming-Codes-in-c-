@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+const long int mod = 1e9 + 7;                                          
+
+int main()
+{
+    long int n,k,x;
+    cin>>n>>k>>x;
+    long int a[n], b[n];
+    a[0] = x == 1?1:0;
+    b[0] = x == 1?0:1;
+
+    for(int i=1;i<n;i++)
+    {
+        a[i] = b[i-1] % mod;
+        b[i] = (a[i-1] * (k-1) + b[i-1] * (k-2)) % mod;
+    }
+    cout<<a[n-1]<<" ";
+
+}
