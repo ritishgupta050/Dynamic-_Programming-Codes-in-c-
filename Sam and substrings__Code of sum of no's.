@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+const int mod = 1e9 + 7;
+#define ll long long int
+
+int main()
+{
+    string s;
+    cin>>s;
+
+    ll n = s.length();
+    ll dp[n];
+
+    dp[0] = s[0] - '0';
+    ll res = dp[0];
+
+    for(int i=1;i<n;i++)
+    {
+        ll num = s[i] - '0';
+
+        dp[i] = ((i+1)*num + (10*dp[i-1]))%mod;
+        res = (res+dp[i])%mod;
+    }
+
+    cout<<res<<endl;
+}
